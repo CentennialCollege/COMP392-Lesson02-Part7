@@ -94,6 +94,7 @@ function init() {
     
     lookAtGeometry = new SphereGeometry(2);
     lookAtMesh = new Mesh(lookAtGeometry,new LambertMaterial({color: 0xff0000}));
+    lookAtMesh.position.set(0,10,0);
     scene.add(lookAtMesh);
     console.log("Add a small sphere to look at");
     
@@ -155,12 +156,12 @@ function gameLoop(): void {
     if(camera instanceof PerspectiveCamera) {
         var x = 10 + (100 * (Math.sin(step)));
         camera.lookAt(new Vector3(x, 10, 0));
-        lookAtMesh.position = new Vector3(x, 10, 0);
     } else {
         var x = ((Math.cos(step)));
         camera.lookAt(new Vector3(x, 0, 0));
-        lookAtMesh.position = new Vector3(x, 10, 0);
     }
+    
+    lookAtMesh.position.set(x, 10, 0);
 
     // render using requestAnimationFrame
     requestAnimationFrame(gameLoop);
