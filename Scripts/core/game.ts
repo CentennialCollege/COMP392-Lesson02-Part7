@@ -55,6 +55,8 @@ var planeMaterial: LambertMaterial;
 var planeGeometry: PlaneGeometry;
 var cubeMaterial: LambertMaterial;
 var cubeGeometry: CubeGeometry;
+var lookAtGeometry: SphereGeometry;
+var lookAtMesh:Mesh;
 
 function init() {
     // Instantiate a new Scene object
@@ -89,6 +91,11 @@ function init() {
         }
     }
     console.log("Added 36 x 36 Cube Primitives to the Scene");
+    
+    lookAtGeometry = new SphereGeometry(2);
+    lookAtMesh = new Mesh(lookAtGeometry,new LambertMaterial({color: 0xff0000}));
+    scene.add(lookAtMesh);
+    console.log("Add a small sphere to look at");
     
     // Add an AmbientLight to the scene
     ambientLight = new AmbientLight(0x292929);
@@ -143,6 +150,17 @@ function addStatsObject() {
 // Setup main game loop
 function gameLoop(): void {
     stats.update();
+
+    step += 0.02;
+    if(camera instanceof PerspectiveCamera) {
+        var x = 10 + (100 * (Math.sin(step)));
+        camera.lookAt(new Vector3(x, 10, 0));
+        lookAtMesh.position = new Vector3(x, 10, 0);
+    } else {
+        var x = ((Math.cos(step)));
+        camera.lookAt(new Vector3(x, 0, 0));
+        lookAtMesh.position = new Vector3(x, 10, 0);
+    }
 
     // render using requestAnimationFrame
     requestAnimationFrame(gameLoop);

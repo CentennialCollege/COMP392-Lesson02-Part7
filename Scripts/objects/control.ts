@@ -17,7 +17,7 @@ module objects {
                         window.innerWidth / 16, 
                         window.innerHeight / 16, 
                         window.innerHeight / - 16, -200, 500 );
-                    camera.position.x = 3;
+                    camera.position.x = 2;
                     camera.position.y = 1;
                     camera.position.z = 3;
                     camera.lookAt(scene.position);
