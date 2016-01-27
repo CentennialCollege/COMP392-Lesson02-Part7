@@ -136,7 +136,7 @@ function gameLoop() {
         camera.lookAt(new Vector3(x, 10, 0));
     }
     else {
-        var x = ((Math.cos(step)));
+        var x = ((Math.sin(step)));
         camera.lookAt(new Vector3(x, 0, 0));
     }
     lookAtMesh.position.set(x, 10, 0);

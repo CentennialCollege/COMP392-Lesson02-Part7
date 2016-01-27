@@ -157,7 +157,7 @@ function gameLoop(): void {
         var x = 10 + (100 * (Math.sin(step)));
         camera.lookAt(new Vector3(x, 10, 0));
     } else {
-        var x = ((Math.cos(step)));
+        var x = ((Math.sin(step)));
         camera.lookAt(new Vector3(x, 0, 0));
     }
     
